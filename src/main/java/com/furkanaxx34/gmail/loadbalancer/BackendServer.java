@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class BackendServer {
 
-    private String ip;
-    private int port;
+    private final String ip;
+    private final int port;
 
     public BackendServer(String address) {
         String[] split = address.split(":");
@@ -17,12 +17,7 @@ public class BackendServer {
         this.port = Integer.parseInt(split[1]);
     }
 
-    public BackendServer(String ip, int port) {
-        this.ip = ip;
-        this.port = port;
-    }
-
     public String getAddress() {
-        return this.ip + ":" + this.port;
+        return String.format("%s:%s", ip, port);
     }
 }
